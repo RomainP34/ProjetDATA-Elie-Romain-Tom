@@ -1,5 +1,5 @@
 {
-  "name": "dc5-tp-yohan",
+  "name": "dc5-cine",
   "version": "1.0.0",
   "description": "",
   "main": "backend/server.js",
@@ -10,7 +10,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "bcrypt": "^5.1.1",
     "bcryptjs": "^2.4.3",
     "connect-mongoose": "^0.0.2",
     "dotenv": "^16.3.1",

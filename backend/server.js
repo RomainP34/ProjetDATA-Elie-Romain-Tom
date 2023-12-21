@@ -1,43 +1,33 @@
-// Importation des modules nécessaires
+// Je charge mes dépendances qui me seront utiles durant le projet
 const dotenv = require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 
-// Initialisation de l'application Express
+// J'instancie mon application avec Express
 const app = express();
 const port = 3000;
 
+// J'ajoute des fonctionnalités
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({extended: false}));
 
-// Middleware pour logger les routes accédées
+// Création d'un middleware inutile mais c'est toujours bien
+// de se refresh la mémoire.
 app.use((req, res, next) => {
-    console.log('Route reçue');
+    console.log('Requête reçue');
     next();
 });
 
-// Définition d'une route de base
+// Définir une route / sur localhost:3000
 app.get('/', (req, res) => {
-    res.send('Hey');
+   res.send('Hey');
 });
 
+// Utilisation d'un fichier route avec un Router
+app.use('/api/categories', require('./routes/api/category.route'));
 
-app.get('/categories', async (req, res) => {
-    // Je récupère ma clé api
-    const apiKey = process.env.TMDB_API_KEY
-
-    // Je confirme l'url avec la clé à l'interieur
-    const url = `https://api.themoviedb.org/3/genre/movie/list?api_key=${apiKey}&languague=fr`;
-
-    const response = await fetch(url)
-    const genres = await response.json();
-
-    // Ce que j'affiche aux utilisateurs
-    res.json(genres)
-});
-
-
+// Je "branche" (fais écouter) mon app sur le port 3000
 app.listen(port, () => {
-    console.log("App démarrée sur le port " + port);
+    console.log("app démarrée");
 });
