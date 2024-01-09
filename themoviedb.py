@@ -1,7 +1,7 @@
 import requests
 import random
 
-api_token = '98def386c8429c3b3de2c1073795b18e'
+api_token = '302b54d6d9565e619c7ed019517318e1'
 language = 'fr'
 
 # Fonction pour vérifier si un genre est disponible
